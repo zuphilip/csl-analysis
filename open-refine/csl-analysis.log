@@ -1,0 +1,3479 @@
+[
+  {
+    "op": "core/column-addition-by-fetching-urls",
+    "description": "Create column ZDB SRU Result at index 3 by fetching URLs based on column eissn using expression grel:\"http://services.dnb.de/sru/zdb?version=1.1&operation=searchRetrieve&recordSchema=MARC21-xml&query=dnb.iss%3D\"  + cells.issn.value + \"+OR+\" + cells.eissn.value",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "ZDB SRU Result",
+    "columnInsertIndex": 3,
+    "baseColumnName": "eissn",
+    "urlExpression": "grel:\"http://services.dnb.de/sru/zdb?version=1.1&operation=searchRetrieve&recordSchema=MARC21-xml&query=dnb.iss%3D\"  + cells.issn.value + \"+OR+\" + cells.eissn.value",
+    "onError": "set-to-blank",
+    "delay": 200
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column ddc at index 4 based on column ZDB SRU Result using expression grel:uniques(forEach(value.parseHtml().select('datafield[tag=082]>subfield[code=a]'), v, htmlText(v))).join(\", \")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "newColumnName": "ddc",
+    "columnInsertIndex": 4,
+    "baseColumnName": "ZDB SRU Result",
+    "expression": "grel:uniques(forEach(value.parseHtml().select('datafield[tag=082]>subfield[code=a]'), v, htmlText(v))).join(\", \")",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": []
+    },
+    "columnName": "ddc",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "793, 796, 610",
+          "796, 610, 793",
+          "796, 793, 610"
+        ],
+        "to": "793, 796, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 330, 650",
+          "330, 004, 650",
+          "330, 650, 004"
+        ],
+        "to": "004, 330, 650"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 660, 620",
+          "620, 550, 660",
+          "660, 550, 620"
+        ],
+        "to": "550, 660, 620"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 320",
+          "320, 610"
+        ],
+        "to": "610, 320"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "640, 630, 690",
+          "690, 640, 630"
+        ],
+        "to": "640, 630, 690"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "070, 400",
+          "400, 070"
+        ],
+        "to": "070, 400"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "400, 800",
+          "800, 400"
+        ],
+        "to": "400, 800"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 550.5",
+          "550.5, 550"
+        ],
+        "to": "550, 550.5"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "370, 300",
+          "300, 370"
+        ],
+        "to": "370, 300"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "640, 630, 590",
+          "590, 640, 630"
+        ],
+        "to": "640, 630, 590"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "070, 610",
+          "610, 070"
+        ],
+        "to": "070, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "150, 400",
+          "400, 150"
+        ],
+        "to": "150, 400"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "150, 590, 610",
+          "590, 150, 610"
+        ],
+        "to": "150, 590, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 616.462005",
+          "616.462005, 610"
+        ],
+        "to": "610, 616.462005"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 618.1005",
+          "618.1005, 610"
+        ],
+        "to": "610, 618.1005"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "640, 050, 630",
+          "640, 630, 050"
+        ],
+        "to": "640, 050, 630"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 660, 690",
+          "660, 620, 690"
+        ],
+        "to": "620, 660, 690"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "570, 579.05",
+          "579.05, 570"
+        ],
+        "to": "570, 579.05"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 620",
+          "620, 330"
+        ],
+        "to": "330, 620"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "793, 150, 796",
+          "793, 796, 150"
+        ],
+        "to": "793, 150, 796"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 070, 020",
+          "070, 004, 020"
+        ],
+        "to": "004, 070, 020"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "570, 333.7",
+          "333.7, 570"
+        ],
+        "to": "570, 333.7"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 640, 630",
+          "640, 630, 610"
+        ],
+        "to": "610, 640, 630"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "580, 610, 570",
+          "610, 580, 570"
+        ],
+        "to": "580, 610, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "100, 900",
+          "900, 100"
+        ],
+        "to": "100, 900"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 616.994005",
+          "616.994005, 610"
+        ],
+        "to": "610, 616.994005"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "310, 610, 570",
+          "610, 570, 310"
+        ],
+        "to": "310, 610, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "640, 630, 570",
+          "640, 570, 630"
+        ],
+        "to": "640, 630, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 624",
+          "624, 550"
+        ],
+        "to": "550, 624"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 620",
+          "620, 550"
+        ],
+        "to": "550, 620"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 333.7",
+          "333.7, 610"
+        ],
+        "to": "610, 333.7"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 400",
+          "400, 004"
+        ],
+        "to": "004, 400"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 004",
+          "004, 620"
+        ],
+        "to": "620, 004"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "370, 510",
+          "510, 370"
+        ],
+        "to": "370, 510"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 300, 610",
+          "330, 610, 300"
+        ],
+        "to": "330, 300, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 620, 600",
+          "620, 004, 600"
+        ],
+        "to": "004, 620, 600"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "590, 630",
+          "630, 590"
+        ],
+        "to": "590, 630"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "570, 530",
+          "530, 570"
+        ],
+        "to": "570, 530"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "300, 340",
+          "340, 300"
+        ],
+        "to": "300, 340"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "070, 004, 400",
+          "400, 004, 070"
+        ],
+        "to": "070, 004, 400"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "540, 530, 570",
+          "540, 570, 530"
+        ],
+        "to": "540, 530, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "590, 599.05",
+          "599.05, 590"
+        ],
+        "to": "590, 599.05"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "320.05, 320",
+          "320, 320.05"
+        ],
+        "to": "320.05, 320"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "900, 940",
+          "940, 900"
+        ],
+        "to": "900, 940"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "530, 620, 670",
+          "620, 530, 670"
+        ],
+        "to": "530, 620, 670"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 530",
+          "530, 620"
+        ],
+        "to": "620, 530"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 370",
+          "370, 330"
+        ],
+        "to": "330, 370"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 616.04205, 570",
+          "616.04205, 610, 570"
+        ],
+        "to": "610, 616.04205, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "540, 610, 570",
+          "610, 540, 570"
+        ],
+        "to": "540, 610, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "650, 793, 796",
+          "796, 650, 793"
+        ],
+        "to": "650, 793, 796"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "150, 590, 610, 570",
+          "590, 150, 610, 570"
+        ],
+        "to": "150, 590, 610, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 660",
+          "660, 620"
+        ],
+        "to": "620, 660"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "360, 610",
+          "610, 360"
+        ],
+        "to": "360, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 330",
+          "330, 550"
+        ],
+        "to": "550, 330"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 910",
+          "910, 550"
+        ],
+        "to": "550, 910"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 510",
+          "510, 330"
+        ],
+        "to": "330, 510"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 004, 650",
+          "650, 620, 004"
+        ],
+        "to": "620, 004, 650"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 300, 380",
+          "330, 380, 300"
+        ],
+        "to": "330, 300, 380"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "530, 600",
+          "600, 530"
+        ],
+        "to": "530, 600"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 370",
+          "370, 004"
+        ],
+        "to": "004, 370"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "370, 400, 150",
+          "400, 370, 150"
+        ],
+        "to": "370, 400, 150"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "510, 530",
+          "530, 510"
+        ],
+        "to": "510, 530"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "150, 400, 100",
+          "400, 150, 100"
+        ],
+        "to": "150, 400, 100"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 300, 360",
+          "330, 360, 300"
+        ],
+        "to": "330, 300, 360"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "590, 580, 610, 570",
+          "590, 610, 580, 570"
+        ],
+        "to": "590, 580, 610, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 004",
+          "004, 330"
+        ],
+        "to": "330, 004"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 910",
+          "910, 330"
+        ],
+        "to": "330, 910"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 300, 150",
+          "330, 150, 300"
+        ],
+        "to": "330, 300, 150"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "150, 360, 610",
+          "150, 610, 360"
+        ],
+        "to": "150, 360, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "540, 590, 570",
+          "590, 540, 570"
+        ],
+        "to": "540, 590, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "100, 610",
+          "610, 100"
+        ],
+        "to": "100, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "540, 610",
+          "610, 540"
+        ],
+        "to": "540, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "050, 300",
+          "300, 050"
+        ],
+        "to": "050, 300"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "510, 004",
+          "004, 510"
+        ],
+        "to": "510, 004"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "370, 400",
+          "400, 370"
+        ],
+        "to": "370, 400"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "796, 793",
+          "793, 796"
+        ],
+        "to": "796, 793"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 616.7005",
+          "616.7005, 610"
+        ],
+        "to": "610, 616.7005"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "500, 610",
+          "610, 500"
+        ],
+        "to": "500, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "333.7, 610, 570",
+          "610, 570, 333.7"
+        ],
+        "to": "333.7, 610, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 000",
+          "000, 004"
+        ],
+        "to": "004, 000"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 610, 690",
+          "620, 690, 610"
+        ],
+        "to": "620, 610, 690"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "150, 370",
+          "370, 150"
+        ],
+        "to": "150, 370"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "590, 610, 570",
+          "610, 590, 570"
+        ],
+        "to": "590, 610, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "540, 590, 610",
+          "590, 610, 540"
+        ],
+        "to": "540, 590, 610"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column ddc using expression grel:value.replace(/(\\.\\d+)/, \"\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "text",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc",
+    "expression": "grel:value.replace(/(\\.\\d+)/, \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "text",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 617",
+          "617, 610",
+          "610, 617, 617",
+          "617, 610, 617"
+        ],
+        "to": "610, 617"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 650",
+          "330, 650, 650",
+          "650, 330"
+        ],
+        "to": "330, 650"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 616, 570",
+          "610, 570, 616"
+        ],
+        "to": "610, 616, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 570, 611",
+          "611, 610, 570"
+        ],
+        "to": "610, 570, 611"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "300, 361",
+          "361, 300"
+        ],
+        "to": "300, 361"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 658",
+          "330, 658, 330"
+        ],
+        "to": "330, 658"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "830",
+          "830, 830"
+        ],
+        "to": "830"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610",
+          "610, 610"
+        ],
+        "to": "610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 070",
+          "004, 004, 070"
+        ],
+        "to": "004, 070"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "621",
+          "621, 621"
+        ],
+        "to": "621"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "650",
+          "650, 650"
+        ],
+        "to": "650"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "660",
+          "660, 660"
+        ],
+        "to": "660"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "540, 572",
+          "572, 540"
+        ],
+        "to": "540, 572"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004",
+          "004, 004"
+        ],
+        "to": "004"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 624",
+          "624, 550"
+        ],
+        "to": "550, 624"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 610",
+          "004, 610, 610"
+        ],
+        "to": "004, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "320, 300",
+          "320, 320, 300"
+        ],
+        "to": "320, 300"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "910",
+          "910, 910"
+        ],
+        "to": "910"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "590, 500",
+          "590, 500, 590"
+        ],
+        "to": "590, 500"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 530",
+          "530, 620"
+        ],
+        "to": "620, 530"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "570, 571",
+          "571, 570"
+        ],
+        "to": "570, 571"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "510",
+          "510, 510"
+        ],
+        "to": "510"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "530",
+          "530, 530"
+        ],
+        "to": "530"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 510",
+          "330, 510, 330"
+        ],
+        "to": "330, 510"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 600, 670",
+          "620, 620, 600, 670"
+        ],
+        "to": "620, 600, 670"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "540",
+          "540, 540"
+        ],
+        "to": "540"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "300",
+          "300, 300"
+        ],
+        "to": "300"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 510",
+          "550, 550, 510"
+        ],
+        "to": "550, 510"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "530, 600",
+          "600, 530"
+        ],
+        "to": "530, 600"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550",
+          "550, 550"
+        ],
+        "to": "550"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "320",
+          "320, 320"
+        ],
+        "to": "320"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "570, 333",
+          "333, 333, 570"
+        ],
+        "to": "570, 333"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 624",
+          "624, 610"
+        ],
+        "to": "610, 624"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "570",
+          "570, 570"
+        ],
+        "to": "570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330",
+          "330, 330"
+        ],
+        "to": "330"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 611",
+          "611, 610"
+        ],
+        "to": "610, 611"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "580",
+          "580, 580"
+        ],
+        "to": "580"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "612, 610",
+          "610, 612"
+        ],
+        "to": "612, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 615",
+          "615, 610"
+        ],
+        "to": "610, 615"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 616",
+          "616, 610"
+        ],
+        "to": "610, 616"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 618",
+          "618, 610"
+        ],
+        "to": "610, 618"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 333",
+          "550, 550, 333"
+        ],
+        "to": "550, 333"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 004",
+          "004, 330, 330"
+        ],
+        "to": "330, 004"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "370",
+          "370, 370"
+        ],
+        "to": "370"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "070, 610, 616",
+          "616, 070, 610"
+        ],
+        "to": "070, 610, 616"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "150",
+          "150, 150"
+        ],
+        "to": "150"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 520",
+          "550, 550, 520"
+        ],
+        "to": "550, 520"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 004, 621",
+          "621, 004, 620"
+        ],
+        "to": "620, 004, 621"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "510, 004",
+          "510, 004, 004"
+        ],
+        "to": "510, 004"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "796, 793",
+          "796, 796, 793"
+        ],
+        "to": "796, 793"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 600",
+          "600, 620"
+        ],
+        "to": "620, 600"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 551",
+          "551, 550"
+        ],
+        "to": "550, 551"
+      }
+    ]
+  },
+  {
+    "op": "core/text-transform",
+    "description": "Text transform on cells in column ddc using expression grel:value.replace(/([1-9][0-9])[1-9]/, \"$10\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc",
+    "expression": "grel:value.replace(/([1-9][0-9])[1-9]/, \"$10\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 570",
+          "610, 610, 570",
+          "570, 610, 570",
+          "610, 570, 570",
+          "610, 570, 610",
+          "570, 610"
+        ],
+        "to": "610, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "790, 790, 610",
+          "790, 610",
+          "610, 610, 790",
+          "790, 610, 610"
+        ],
+        "to": "790, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 650, 300",
+          "330, 650, 300, 650",
+          "330, 650, 330, 300",
+          "650, 330, 300"
+        ],
+        "to": "330, 650, 300"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "910, 610, 940",
+          "940, 610, 910",
+          "940, 910, 610, 610"
+        ],
+        "to": "910, 610, 940"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 610",
+          "610, 330",
+          "610, 330, 610"
+        ],
+        "to": "330, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 004",
+          "004, 620",
+          "620, 004, 620"
+        ],
+        "to": "620, 004"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 300",
+          "300, 330, 300",
+          "330, 330, 300"
+        ],
+        "to": "330, 300"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 360",
+          "330, 330, 330, 360",
+          "330, 360, 360"
+        ],
+        "to": "330, 360"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "590, 570",
+          "570, 590",
+          "590, 570, 570"
+        ],
+        "to": "590, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "580, 570",
+          "570, 580",
+          "570, 580, 570"
+        ],
+        "to": "580, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "360, 610",
+          "360, 610, 360",
+          "610, 360, 610"
+        ],
+        "to": "360, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 340",
+          "610, 340, 610",
+          "610, 610, 340"
+        ],
+        "to": "610, 340"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 320",
+          "320, 330",
+          "330, 320, 330"
+        ],
+        "to": "330, 320"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 570, 630",
+          "630, 610, 570"
+        ],
+        "to": "610, 570, 630"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 360, 340",
+          "330, 360, 360, 340"
+        ],
+        "to": "330, 360, 340"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "150, 610",
+          "150, 610, 610"
+        ],
+        "to": "150, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "360, 300",
+          "300, 360"
+        ],
+        "to": "360, 300"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "070, 610",
+          "070, 610, 610"
+        ],
+        "to": "070, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 650",
+          "330, 650, 650"
+        ],
+        "to": "330, 650"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "630, 580, 570, 640, 630",
+          "640, 630, 580, 570"
+        ],
+        "to": "630, 580, 570, 640"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "660, 640, 630",
+          "640, 660, 630"
+        ],
+        "to": "660, 640, 630"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610",
+          "610, 610"
+        ],
+        "to": "610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "690, 330",
+          "330, 690"
+        ],
+        "to": "690, 330"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620",
+          "620, 620"
+        ],
+        "to": "620"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "630",
+          "630, 630"
+        ],
+        "to": "630"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 330",
+          "330, 620"
+        ],
+        "to": "620, 330"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "650",
+          "650, 650"
+        ],
+        "to": "650"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "660",
+          "660, 660"
+        ],
+        "to": "660"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "670",
+          "670, 670"
+        ],
+        "to": "670"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "510, 650",
+          "510, 650, 650"
+        ],
+        "to": "510, 650"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 640, 630",
+          "640, 630, 610, 610"
+        ],
+        "to": "610, 640, 630"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 050",
+          "610, 610, 050"
+        ],
+        "to": "610, 050"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "910, 890, 940",
+          "910, 940, 890"
+        ],
+        "to": "910, 890, 940"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "590, 610",
+          "590, 610, 610"
+        ],
+        "to": "590, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550, 500",
+          "500, 550"
+        ],
+        "to": "550, 500"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "790, 790, 370",
+          "790, 790, 790, 370"
+        ],
+        "to": "790, 370"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 610, 360",
+          "330, 610, 360, 610"
+        ],
+        "to": "330, 610, 360"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 530",
+          "620, 530, 530"
+        ],
+        "to": "620, 530"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 610, 570",
+          "330, 570, 610"
+        ],
+        "to": "330, 610, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "910, 390",
+          "910, 910, 390"
+        ],
+        "to": "910, 390"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "540, 610, 570",
+          "540, 610, 610, 570"
+        ],
+        "to": "540, 610, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "540, 330",
+          "330, 540"
+        ],
+        "to": "540, 330"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 350",
+          "610, 610, 350"
+        ],
+        "to": "610, 350"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "790, 150, 790",
+          "150, 790"
+        ],
+        "to": "790, 150"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "570, 330",
+          "330, 570"
+        ],
+        "to": "570, 330"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "500",
+          "500, 500"
+        ],
+        "to": "500"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "790, 150, 790, 610",
+          "790, 790, 790, 610, 150"
+        ],
+        "to": "790, 150, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "510",
+          "510, 510"
+        ],
+        "to": "510"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "530",
+          "530, 530"
+        ],
+        "to": "530"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 510",
+          "330, 510, 330"
+        ],
+        "to": "330, 510"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "660, 540, 640, 630",
+          "540, 640, 630, 660"
+        ],
+        "to": "660, 540, 640, 630"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 600, 670",
+          "620, 670, 600"
+        ],
+        "to": "620, 600, 670"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "540",
+          "540, 540"
+        ],
+        "to": "540"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "300",
+          "300, 300"
+        ],
+        "to": "300"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "300, 150, 610",
+          "300, 300, 150, 610"
+        ],
+        "to": "300, 150, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "790, 790",
+          "790"
+        ],
+        "to": "790"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "550",
+          "550, 550"
+        ],
+        "to": "550"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "320",
+          "320, 320"
+        ],
+        "to": "320"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "610, 620",
+          "620, 610"
+        ],
+        "to": "610, 620"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "570",
+          "570, 570"
+        ],
+        "to": "570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330",
+          "330, 330"
+        ],
+        "to": "330"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "340",
+          "340, 340"
+        ],
+        "to": "340"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "590",
+          "590, 590"
+        ],
+        "to": "590"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 510",
+          "510, 620"
+        ],
+        "to": "620, 510"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 910",
+          "910, 330"
+        ],
+        "to": "330, 910"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "380",
+          "380, 380"
+        ],
+        "to": "380"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "150",
+          "150, 150"
+        ],
+        "to": "150"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "510, 910, 940",
+          "510, 940, 910"
+        ],
+        "to": "510, 910, 940"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "300, 150, 610, 360, 610",
+          "610, 300, 150, 360, 610"
+        ],
+        "to": "300, 150, 610, 360"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "540, 610",
+          "540, 610, 540"
+        ],
+        "to": "540, 610"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "510, 004",
+          "004, 510"
+        ],
+        "to": "510, 004"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "500, 600",
+          "500, 600, 600"
+        ],
+        "to": "500, 600"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "330, 690, 570",
+          "690, 330, 570"
+        ],
+        "to": "330, 690, 570"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 600",
+          "620, 600, 620"
+        ],
+        "to": "620, 600"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "150, 050",
+          "150, 150, 050"
+        ],
+        "to": "150, 050"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "000, 570, 570"
+        ],
+        "to": "000, 570"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "005",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 005"
+        ],
+        "to": "004"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "005",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 620, 005"
+        ],
+        "to": "004, 620"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "006",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 006"
+        ],
+        "to": "004"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "006",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "004, 006, 600"
+        ],
+        "to": "004, 600"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "006",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "006, 620, 004"
+        ],
+        "to": "620, 004"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "620, 004",
+          "004, 620"
+        ],
+        "to": "620, 004"
+      }
+    ]
+  },
+  {
+    "op": "core/column-addition",
+    "description": "Create column ddc-first at index 5 based on column ddc using expression grel:value.replace(/([0-9])[0-9][0-9]/, \"$1**\")",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "newColumnName": "ddc-first",
+    "columnInsertIndex": 5,
+    "baseColumnName": "ddc",
+    "expression": "grel:value.replace(/([0-9])[0-9][0-9]/, \"$1**\")",
+    "onError": "set-to-blank"
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "6**, 5**",
+          "5**, 6**",
+          "6**, 6**, 5**",
+          "5**, 6**, 5**",
+          "5**, 6**, 6**",
+          "5**, 5**, 6**",
+          "6**, 5**, 6**",
+          "6**, 5**, 5**",
+          "6**, 5**, 6**, 6**",
+          "6**, 5**, 6**, 5**",
+          "5**, 6**, 6**, 5**",
+          "6**, 6**, 5**, 5**",
+          "5**, 5**, 6**, 5**",
+          "5**, 6**, 6**, 6**",
+          "6**, 5**, 5**, 6**",
+          "6**, 6**, 6**, 5**",
+          "5**, 5**, 5**, 5**, 6**",
+          "5**, 5**, 5**, 6**",
+          "5**, 5**, 6**, 6**",
+          "5**, 6**, 5**, 6**",
+          "5**, 6**, 6**, 5**, 5**",
+          "6**, 5**, 5**, 6**, 6**",
+          "6**, 6**, 5**, 6**"
+        ],
+        "to": "6**, 5**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "6**, 3**",
+          "3**, 6**",
+          "3**, 6**, 3**",
+          "3**, 3**, 6**",
+          "3**, 6**, 6**",
+          "3**, 3**, 6**, 6**",
+          "3**, 6**, 6**, 6**",
+          "3**, 3**, 3**, 6**",
+          "3**, 3**, 6**, 3**, 3**",
+          "3**, 6**, 3**, 3**",
+          "3**, 6**, 3**, 6**",
+          "6**, 3**, 3**",
+          "6**, 3**, 6**",
+          "6**, 6**, 3**"
+        ],
+        "to": "6**, 3**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "3**, 6**, 5**",
+          "5**, 6**, 3**",
+          "3**, 5**, 6**",
+          "3**, 6**, 6**, 6**, 5**",
+          "5**, 3**, 6**",
+          "6**, 5**, 3**",
+          "3**, 3**, 5**, 6**",
+          "3**, 5**, 6**, 5**",
+          "3**, 6**, 5**, 5**",
+          "6**, 3**, 5**, 6**, 5**",
+          "6**, 3**, 6**, 5**"
+        ],
+        "to": "3**, 6**, 5**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "6**, 0**",
+          "0**, 6**",
+          "0**, 6**, 6**",
+          "6**, 0**, 6**",
+          "6**, 0**, 0**",
+          "0**, 0**, 6**",
+          "0**, 6**, 0**",
+          "6**, 6**, 0**",
+          "6**, 0**, 0**, 0**",
+          "6**, 0**, 0**, 6**",
+          "6**, 6**, 6**, 0**"
+        ],
+        "to": "6**, 0**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**, 5**, 6**",
+          "0**, 6**, 5**",
+          "5**, 5**, 0**, 6**",
+          "6**, 5**, 0**",
+          "0**, 0**, 6**, 5**",
+          "0**, 5**, 5**, 6**",
+          "5**, 0**, 6**",
+          "5**, 0**, 6**, 6**",
+          "5**, 6**, 0**",
+          "6**, 0**, 5**",
+          "6**, 5**, 0**, 5**"
+        ],
+        "to": "0**, 5**, 6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5**, 3**",
+          "3**, 5**",
+          "5**, 3**, 5**",
+          "3**, 5**, 5**",
+          "3**, 3**, 5**",
+          "5**, 3**, 3**",
+          "3**, 5**, 3**",
+          "3**, 3**, 5**, 3**",
+          "3**, 5**, 5**, 5**",
+          "5**, 5**, 3**"
+        ],
+        "to": "5**, 3**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**, 3**",
+          "3**, 9**",
+          "3**, 9**, 3**",
+          "9**, 3**, 9**",
+          "3**, 3**, 9**",
+          "3**, 9**, 9**",
+          "9**, 3**, 3**",
+          "9**, 3**, 3**, 3**",
+          "9**, 9**, 3**, 3**",
+          "9**, 9**, 3**, 9**"
+        ],
+        "to": "9**, 3**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5**, 9**",
+          "5**, 9**, 9**",
+          "9**, 5**, 5**",
+          "5**, 5**, 9**",
+          "5**, 5**, 9**, 5**",
+          "5**, 9**, 5**",
+          "9**, 5**",
+          "9**, 5**, 9**",
+          "9**, 9**, 5**"
+        ],
+        "to": "5**, 9**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**, 3**",
+          "3**, 0**",
+          "3**, 3**, 0**",
+          "0**, 3**, 0**, 3**",
+          "0**, 3**, 3**, 3**",
+          "3**, 0**, 0**",
+          "3**, 0**, 3**",
+          "3**, 3**, 0**, 3**"
+        ],
+        "to": "0**, 3**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "3**, 1**, 6**",
+          "1**, 3**, 6**",
+          "1**, 6**, 3**",
+          "3**, 1**, 6**, 3**",
+          "3**, 3**, 1**, 6**, 3**",
+          "3**, 6**, 1**, 6**, 6**",
+          "6**, 1**, 6**, 3**",
+          "6**, 6**, 3**, 1**"
+        ],
+        "to": "3**, 1**, 6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**, 3**",
+          "3**, 3**, 1**",
+          "3**, 1**",
+          "3**, 1**, 3**",
+          "3**, 3**, 1**, 3**",
+          "1**, 3**, 3**",
+          "3**, 1**, 1**"
+        ],
+        "to": "1**, 3**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**, 3**, 6**",
+          "3**, 6**, 0**",
+          "0**, 6**, 3**",
+          "3**, 0**, 6**",
+          "3**, 0**, 6**, 0**",
+          "6**, 0**, 3**, 3**",
+          "6**, 3**, 0**"
+        ],
+        "to": "0**, 3**, 6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5**, 0**",
+          "0**, 5**",
+          "0**, 5**, 0**",
+          "0**, 5**, 5**",
+          "5**, 0**, 5**",
+          "5**, 5**, 0**",
+          "5**, 5**, 0**, 5**, 5**"
+        ],
+        "to": "5**, 0**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "7**, 6**",
+          "6**, 7**",
+          "6**, 7**, 7**",
+          "7**, 6**, 6**, 7**",
+          "7**, 6**, 6**, 7**, 6**",
+          "7**, 6**, 7**"
+        ],
+        "to": "7**, 6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**, 3**, 5**",
+          "3**, 0**, 5**",
+          "0**, 5**, 3**",
+          "3**, 3**, 0**, 5**",
+          "5**, 0**, 3**"
+        ],
+        "to": "0**, 3**, 5**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "6**, 9**",
+          "9**, 6**, 9**",
+          "9**, 6**",
+          "9**, 9**, 6**",
+          "9**, 9**, 9**, 6**"
+        ],
+        "to": "6**, 9**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**, 5**",
+          "5**, 1**, 5**",
+          "1**, 5**, 1**",
+          "1**, 5**, 5**"
+        ],
+        "to": "1**, 5**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "3**, 0**, 6**, 5**",
+          "0**, 3**, 6**, 6**, 5**",
+          "3**, 6**, 0**, 6**, 5**",
+          "6**, 5**, 0**, 3**"
+        ],
+        "to": "3**, 0**, 6**, 5**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5**, 5**, 7**",
+          "5**, 7**, 7**",
+          "7**, 5**",
+          "7**, 5**, 5**"
+        ],
+        "to": "5**, 5**, 7**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5**",
+          "5**, 5**",
+          "5**, 5**, 5**",
+          "5**, 5**, 5**, 5**"
+        ],
+        "to": "5**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "6**",
+          "6**, 6**",
+          "6**, 6**, 6**",
+          "6**, 6**, 6**, 6**"
+        ],
+        "to": "6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "3**, 9**, 8**",
+          "8**, 8**, 8**, 9**, 9**, 3**",
+          "9**, 3**, 9**, 8**, 9**",
+          "9**, 8**, 9**, 9**, 9**, 3**"
+        ],
+        "to": "3**, 9**, 8**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**, 0**",
+          "9**, 9**, 0**",
+          "0**, 9**",
+          "9**, 0**, 9**"
+        ],
+        "to": "9**, 0**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "4**, 8**",
+          "4**, 4**, 8**",
+          "8**, 4**",
+          "8**, 4**, 8**"
+        ],
+        "to": "4**, 8**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**, 5**, 6**",
+          "1**, 6**, 5**",
+          "1**, 5**, 6**, 5**",
+          "6**, 6**, 1**, 5**, 6**"
+        ],
+        "to": "1**, 5**, 6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**, 4**",
+          "4**, 1**",
+          "1**, 4**, 1**"
+        ],
+        "to": "1**, 4**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**, 6**",
+          "6**, 1**",
+          "6**, 1**, 6**"
+        ],
+        "to": "1**, 6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**",
+          "0**, 0**",
+          "0**, 0**, 0**"
+        ],
+        "to": "0**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "3**",
+          "3**, 3**",
+          "3**, 3**, 3**"
+        ],
+        "to": "3**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "8**",
+          "8**, 8**",
+          "8**, 8**, 8**"
+        ],
+        "to": "8**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**",
+          "9**, 9**",
+          "9**, 9**, 9**"
+        ],
+        "to": "9**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**, 4**",
+          "0**, 0**, 4**",
+          "0**, 4**, 0**"
+        ],
+        "to": "0**, 4**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**, 7**",
+          "7**, 0**, 7**",
+          "7**, 7**, 0**"
+        ],
+        "to": "0**, 7**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**, 3**, 5**",
+          "9**, 5**, 3**",
+          "5**, 9**, 3**, 5**"
+        ],
+        "to": "9**, 3**, 5**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "7**, 3**",
+          "3**, 7**",
+          "7**, 3**, 7**"
+        ],
+        "to": "7**, 3**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "3**, 8**",
+          "3**, 3**, 8**",
+          "3**, 8**, 8**, 3**, 8**"
+        ],
+        "to": "3**, 8**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**, 3**, 6**",
+          "3**, 9**, 6**",
+          "9**, 3**, 3**, 6**"
+        ],
+        "to": "9**, 3**, 6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "3**, 1**, 5**",
+          "5**, 1**, 3**",
+          "5**, 1**, 3**, 5**, 5**"
+        ],
+        "to": "3**, 1**, 5**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "7**, 1**",
+          "1**, 7**"
+        ],
+        "to": "7**, 1**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**, 3**, 7**",
+          "0**, 7**, 3**"
+        ],
+        "to": "0**, 3**, 7**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**",
+          "1**, 1**"
+        ],
+        "to": "1**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "2**",
+          "2**, 2**"
+        ],
+        "to": "2**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "4**",
+          "4**, 4**"
+        ],
+        "to": "4**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "7**",
+          "7**, 7**"
+        ],
+        "to": "7**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5**, 7**, 3**, 7**",
+          "7**, 3**, 7**, 5**"
+        ],
+        "to": "5**, 7**, 3**, 7**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**, 0**",
+          "0**, 1**"
+        ],
+        "to": "1**, 0**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "8**, 9**",
+          "9**, 8**, 9**"
+        ],
+        "to": "8**, 9**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**, 0**, 9**, 6**",
+          "6**, 9**, 0**"
+        ],
+        "to": "9**, 0**, 9**, 6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5**, 3**, 8**",
+          "8**, 5**, 3**"
+        ],
+        "to": "5**, 3**, 8**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "7**, 9**, 9**, 9**",
+          "9**, 7**"
+        ],
+        "to": "7**, 9**, 9**, 9**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "7**, 5**, 6**",
+          "7**, 7**, 6**, 5**"
+        ],
+        "to": "7**, 5**, 6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**, 6**, 7**",
+          "7**, 1**, 6**"
+        ],
+        "to": "1**, 6**, 7**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**, 0**, 6**",
+          "1**, 6**, 0**"
+        ],
+        "to": "1**, 0**, 6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**, 0**, 3**",
+          "3**, 0**, 1**"
+        ],
+        "to": "1**, 0**, 3**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5**, 0**, 7**",
+          "5**, 7**, 0**, 0**"
+        ],
+        "to": "5**, 0**, 7**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**, 6**, 5**, 7**",
+          "0**, 7**, 7**, 6**, 5**"
+        ],
+        "to": "0**, 6**, 5**, 7**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "3**, 2**",
+          "3**, 2**, 3**"
+        ],
+        "to": "3**, 2**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "2**, 6**",
+          "6**, 2**"
+        ],
+        "to": "2**, 6**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "6**, 8**",
+          "8**, 6**"
+        ],
+        "to": "6**, 8**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**, 0**, 9**, 6**, 3**",
+          "6**, 9**, 0**, 3**, 9**"
+        ],
+        "to": "9**, 0**, 9**, 6**, 3**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "3**, 4**, 1**",
+          "1**, 3**, 4**, 1**"
+        ],
+        "to": "3**, 4**, 1**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**, 3**, 8**",
+          "8**, 1**, 3**"
+        ],
+        "to": "1**, 3**, 8**"
+      },
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**, 4**, 6**",
+          "6**, 4**, 0**"
+        ],
+        "to": "0**, 4**, 6**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5**, 5**, 7**"
+        ],
+        "to": "5**, 7**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**, 0**, 9**, 6**"
+        ],
+        "to": "0**, 9**, 6**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**, 0**, 9**, 6**, 3**"
+        ],
+        "to": "0**, 9**, 6**, 3**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5**, 7**, 3**, 7**"
+        ],
+        "to": "5**, 7**, 3**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "7**, 9**, 9**, 9**"
+        ],
+        "to": "7**, 9**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**, 0**, 0**, 9**, 2**"
+        ],
+        "to": "0**, 9**, 2**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "0**, 5**, 6**, 6**, 2**"
+        ],
+        "to": "0**, 5**, 6**, 2**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "1**, 0**, 1**, 5**"
+        ],
+        "to": "0**, 1**, 5**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "3**, 6**, 7**, 7**"
+        ],
+        "to": "3**, 6**, 7**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "5**, 8**, 5**"
+        ],
+        "to": "5**, 8**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "6**, 9**, 9**, 1**"
+        ],
+        "to": "6**, 9**, 1**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "7**, 0**, 1**, 7**"
+        ],
+        "to": "7**, 0**, 1**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "7**, 0**, 7**, 6**"
+        ],
+        "to": "0**, 7**, 6**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**, 0**, 3**, 9**"
+        ],
+        "to": "9**, 0**, 3**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**, 0**, 6**, 9**, 6**, 8**"
+        ],
+        "to": "9**, 0**, 6**, 8**"
+      }
+    ]
+  },
+  {
+    "op": "core/mass-edit",
+    "description": "Mass edit cells in column ddc-first",
+    "engineConfig": {
+      "mode": "row-based",
+      "facets": [
+        {
+          "mode": "regex",
+          "caseSensitive": false,
+          "query": "",
+          "name": "ddc",
+          "type": "text",
+          "columnName": "ddc"
+        }
+      ]
+    },
+    "columnName": "ddc-first",
+    "expression": "value",
+    "edits": [
+      {
+        "fromBlank": false,
+        "fromError": false,
+        "from": [
+          "9**, 2**, 3**, 9**"
+        ],
+        "to": "9**, 2**, 3**"
+      }
+    ]
+  }
+]
