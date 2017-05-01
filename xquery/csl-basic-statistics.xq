@@ -11,6 +11,7 @@ declare function functx:if-empty
 (:this isn't super fast, it takes here around 5s:)
 for $style in db:open("csl-styles")
 let $id := $style//*:id
+let $label := $style//*:title
 let $issn := functx:if-empty($style//*:issn, "-")
 let $eissn := functx:if-empty($style//*:eissn, "-")
 let $field := $style//*:category/@field
@@ -28,4 +29,4 @@ let $numberOfDependents :=
     count($dependents)
   )
 
-return string-join(( $id, $issn, $eissn, $numberOfDependents, $class, $format, $lang, string-join(($field), "|")), ",")
+return string-join(( $id, $label, $issn, $eissn, $numberOfDependents, $class, $format, $lang, string-join(($field), "|")), ",")
