@@ -21,11 +21,10 @@ to work with an older snapshot you can simply `git checkout` it.
 XQueries.
 2. Open baseX
 3. Create a new database (Database>New...)
-   a. Select the csl styles directory
-   b. Choose a reasonable name, e.g. `csl-styles`
-   c. Change the file patterns to `*.csl`
-   d. Click `Ok`
-![basex-new-database](img/basex-new-database.jpg)
+   1. Select the csl styles directory
+   2. Choose a reasonable name, e.g. `csl-styles`
+   3. Change the file patterns to `*.csl`, cf. with [this picture](img/basex-new-database.jpg)
+   4. Click `Ok`
 4. Open the XQuery files `.xq` from the subfolder `xquery` you are
 interested in (Editor>Open...)
 
@@ -45,21 +44,21 @@ for a information about the discipline of the journal.
 2. Open the result of the `csl-basic-statistics.xq` TODO w/o Excel
 3. Create a new column which calls the URLs and download the
 result as XML data. !!For the whole data this took at least 1 hour!!
-   a. Create new column based on some column
-   b. Use this GREL
+   1. Create new column based on some column
+   2. Use this GREL
    ```
    "http://services.dnb.de/sru/zdb?version=1.1&operation=searchRetrieve&recordSchema=MARC21-xml&query=dnb.iss%3D"  + cells.issn.value + "+OR+" + cells.eissn.value
    ```
-   c. Change the waiting time between several requests
-   d. Start
-   e. Wait...
+   3. Change the waiting time between several requests
+   4. Start
+   5. Wait...
 4. Create a new column for extracting the DDC info
-   a. Create a new column based on the previous column with the xml data
-   b. Use this GREL
+   1. Create a new column based on the previous column with the xml data
+   2. Use this GREL
    ```
    uniques(forEach(value.parseHtml().select('datafield[tag=082]>subfield[code=a]'), v, htmlText(v))).join(", ")
    ```
-   c. Click `OK`
+   3. Click `OK`
 5. Create a text facet from the row `ddc`
 6. Cluster it to merge the same combinations with different order
 7. Explore further..
@@ -72,7 +71,11 @@ Our current output from this is saved as a CSV file at [open-refine/csl-analysis
 
 1. Download and install [Gephi](https://gephi.org/).
 2. Open Gephi, create a `New Project`
-3. Go to the `Data Labratory`, click on `Import spreadsheet`, choose `open-refine/csl-analysis.csv` as the `Nodes table`, in the `Import Settings` choose `Integer` as type for `#depend`
+3. Go to the `Data Labratory`
+   1. click on `Import spreadsheet`
+   2. Choose `open-refine/csl-analysis.csv` as the `Nodes table`
+   3. In the `Import Settings` choose `Integer` as type for `#depend`
+   4. Click `Finish`
 4. Delete the nodes corresponding to dependent styles, i.e. where `#depend` is `-1`.
 5. Open `csl-template.csv` with your text editor and add `Source,Target` as your first line.
 6. Click again on `Import spreadsheet`, select the adapted [`csl-template.csv`](gephy/csl-template-with-header.csv) as the `Edge table`.
