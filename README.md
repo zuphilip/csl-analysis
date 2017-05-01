@@ -86,4 +86,6 @@ Our current output from this is saved as a CSV file at [open-refine/csl-analysis
 11. TODO labels
 12. For export make sure that you have activated the labels also in the `Preview` tab
 
+![gephi](img/gephi.png)
+
 See [gephi/graph.png](gephi/graph.png) for the current output.
