@@ -66,10 +66,21 @@ result as XML data. !!For the whole data this took at least 1 hour!!
 
 ![open refine](img/open-refine.png)
 
+Our current output from this is saved as a CSV file at [open-refine/csl-analysis.csv](open-refine/csl-analysis.csv).
 
 ## Gephi
 
 1. Download and install [Gephi](https://gephi.org/).
-2. Open `csl-basic-statistics.csv` as node list TODO how to add the header before?
-3. Open `csl-template.csv` as edge list
-4. ...
+2. Open Gephi, create a `New Project`
+3. Go to the `Data Labratory`, click on `Import spreadsheet`, choose `open-refine/csl-analysis.csv` as the `Nodes table`, in the `Import Settings` choose `Integer` as type for `#depend`
+4. Delete the nodes corresponding to dependent styles, i.e. where `#depend` is `-1`.
+5. Open `csl-template.csv` with your text editor and add `Source,Target` as your first line.
+6. Click again on `Import spreadsheet`, select the adapted [`csl-template.csv`](gephy/csl-template-with-header.csv) as the `Edge table`.
+7. Switch to the `Overview` tab
+8. Click on `Statistics` and run the detection of the `Connected Components`, afterwards you can in the `Filter` tab filter on the size of the connected componentent (`Partition Count` and choose `Partition ID`). In this way you can filter out single nodes or small components of just a handful nodes to see the big picture.
+9. `Appearance>Nodes>Color>Partition` choose for example `ddc-first`
+10. `Appearance>Nodes>Size>Ranking` choose for example `#depend`
+11. TODO labels
+12. For export make sure that you have activated the labels also in the `Preview` tab
+
+See [gephi/graph.png](gephi/graph.png) for the current output.
