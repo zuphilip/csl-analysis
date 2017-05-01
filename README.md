@@ -89,3 +89,7 @@ Our current output from this is saved as a CSV file at [open-refine/csl-analysis
 ![gephi](img/gephi.png)
 
 See [gephi/graph.png](gephi/graph.png) for the current output.
+
+## pivottable
+
+Using the JavaScript implementation with drag'n'drop https://github.com/nicolaskruchten/pivottable for our exploring our data.
