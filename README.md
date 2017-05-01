@@ -96,3 +96,5 @@ Using the JavaScript implementation with drag'n'drop https://github.com/nicolask
 
 * code: [docs](docs)
 * result: https://zuphilip.github.io/csl-analysis/
+
+(Hint: For your own local csv files try this: http://nicolas.kruchten.com/pivottable/examples/local.html)
