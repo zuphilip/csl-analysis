@@ -8,7 +8,7 @@ declare function functx:if-empty
   else $value
  } ;
 
-(:this isn't super fast, it takes here around 5s:)
+(:this isn't super fast, it takes here around 20s:)
 for $style in db:open("csl-styles")
 let $id := $style//*:id
 let $label := $style//*:title
@@ -28,5 +28,11 @@ let $numberOfDependents :=
   else (
     count($dependents)
   )
+(:By using a temporarily variable $templateLinks rather than output the count directly, we avoid that missing values are skipped completely:)
+let $templateLinks := 
+  for $templateStyles in db:open("csl-styles")
+  where $templateStyles//*:link[@rel="template"]/@href=$id
+  return $templateStyles
+let $numberOfTemplateLinks := count($templateLinks)
 
-return string-join(( $id, $label, $issn, $eissn, $numberOfDependents, $class, $format, $lang, string-join(($field), "|")), ",")
+return string-join(( $id, $label, $issn, $eissn, $numberOfDependents, $numberOfTemplateLinks, $class, $format, $lang, string-join(($field), "|")), ",")
